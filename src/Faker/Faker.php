@@ -18,14 +18,35 @@ namespace Faker;
  */
 abstract class Faker
 {
+    protected static $rand = null;
+
+    public static function seed($seed)
+    {
+        if (!isset(self::$rand)) {
+            self::$rand = new MersenneTwister($seed);
+        } else {
+            self::$rand->setSeed($seed);
+        }
+    }
+
     protected static function numerify($numberString)
     {
-        return preg_replace_callback("/#/", function() { return rand(0, 9); }, $numberString);
+        return preg_replace_callback("/#/", array('self', 'number'), $numberString);
+    }
+
+    public static function number()
+    {
+        return self::rand(0, 9);
     }
 
     protected static function letterify($letterString)
     {
-        return preg_replace_callback("/\?/", function() { return chr(rand(97,122)); }, $letterString);
+        return preg_replace_callback("/\?/", array('self', 'letter'), $letterString);
+    }
+
+    public static function letter()
+    {
+        return chr(self::rand(97, 122));
     }
 
     protected static function bothify($string)
@@ -35,6 +56,31 @@ abstract class Faker
 
     protected static function pickOne(array $options)
     {
-        return $options[array_rand($options)];
+        return $options[self::arrayRand($options)];
+    }
+
+    public static function rand($min = null, $max = null)
+    {
+        if (isset(self::$rand)) {
+            return self::$rand->getNext($min, $max);
+        } else {
+            return rand($min, $max);
+        }
+    }
+
+    public static function arrayRand(array $array)
+    {
+        $keys = array_keys($array);
+        return $keys[self::rand(0, (count($keys) -1))];
+    }
+
+    public static function shuffle(array $array)
+    {
+        $ret = $array;
+        $rand = array(get_class(), 'rand');
+        uasort($ret, function($a, $b) use ($rand) {
+            return call_user_func($rand, -1, 1);
+        });
+        return $ret;
     }
 }

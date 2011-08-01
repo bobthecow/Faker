@@ -28,7 +28,7 @@ abstract class Address extends Faker
      */
     public static function address()
     {
-        return implode("\n", array(self::streetAddress(rand(0, 1)), self::cityStateZip()));
+        return implode("\n", array(self::streetAddress(self::pickOne(array(true, false))), self::cityStateZip()));
     }
 
     /**
@@ -40,7 +40,7 @@ abstract class Address extends Faker
      */
     public static function streetName()
     {
-        return implode(' ', array(rand(0, 1) ? Name::firstName() : Name::lastName(), self::streetSuffix()));
+        return implode(' ', array(self::pickOne(array(true, false)) ? Name::firstName() : Name::lastName(), self::streetSuffix()));
     }
 
     /**

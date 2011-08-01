@@ -28,7 +28,7 @@ abstract class DateTime extends Faker
      */
     public static function timestamp()
     {
-        return rand(0, time());
+        return self::rand(0, time());
     }
 
     /**
@@ -163,7 +163,7 @@ abstract class DateTime extends Faker
      */
     public static function monthAbbr()
     {
-        return date("M", self::monthTimestamp(rand(1, 12)));
+        return date("M", self::monthTimestamp(self::rand(1, 12)));
     }
 
     private static function monthTimestamp($month)
@@ -180,7 +180,7 @@ abstract class DateTime extends Faker
      */
     public static function weekday()
     {
-        return date("l", self::weekdayTimestamp(rand(1, 7)));
+        return date("l", self::weekdayTimestamp(self::rand(1, 7)));
     }
 
     /**
@@ -192,7 +192,7 @@ abstract class DateTime extends Faker
      */
     public static function weekdayAbbr()
     {
-        return date("D", self::weekdayTimestamp(rand(1, 7)));
+        return date("D", self::weekdayTimestamp(self::rand(1, 7)));
     }
 
     private static function weekdayTimestamp($day)

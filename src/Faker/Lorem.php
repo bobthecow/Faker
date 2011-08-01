@@ -55,7 +55,7 @@ abstract class Lorem extends Faker
             'itaque', 'earum', 'rerum', 'hic', 'tenetur', 'a', 'sapiente', 'delectus', 'ut', 'aut', 'reiciendis',
             'voluptatibus', 'maiores', 'doloribus', 'asperiores', 'repellat'
         );
-        shuffle($words);
+        $words = self::shuffle($words);
         return array_slice($words, 0, $num);
     }
 
@@ -72,7 +72,7 @@ abstract class Lorem extends Faker
      */
     public static function sentence($wordCount = 4)
     {
-        return ucfirst(implode(' ', self::words(rand($wordCount, $wordCount + 6)))) . '.';
+        return ucfirst(implode(' ', self::words(self::rand($wordCount, $wordCount + 6)))) . '.';
     }
 
     /**
@@ -105,7 +105,7 @@ abstract class Lorem extends Faker
      */
     public static function paragraph($sentenceCount = 3)
     {
-        return implode(' ', self::sentences(rand($sentenceCount, $sentenceCount + 3)));
+        return implode(' ', self::sentences(self::rand($sentenceCount, $sentenceCount + 3)));
     }
 
     /**

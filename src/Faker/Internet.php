@@ -70,7 +70,7 @@ abstract class Internet extends Faker
     {
         if ($name !== null) {
             $email = preg_split('/\W+/', $name);
-            shuffle($email);
+            $email = self::shuffle($email);
             $email = implode(self::separator(), $email);
         } else {
             $email = sprintf(
@@ -133,7 +133,7 @@ abstract class Internet extends Faker
      */
     public static function ipv4Address()
     {
-        return implode('.', array(rand(0,255), rand(0,255), rand(0,255), rand(0,255)));
+        return implode('.', array(self::rand(0,255), self::rand(0,255), self::rand(0,255), self::rand(0,255)));
     }
 
     private static function separator()
