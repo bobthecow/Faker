@@ -11,18 +11,46 @@
 
 namespace Faker;
 
+/**
+ * Address Faker.
+ *
+ * @abstract
+ * @extends Faker
+ */
 abstract class Address extends Faker
 {
+    /**
+     * Generate a random full US address, including city, state and zip code.
+     *
+     * @access public
+     * @static
+     * @return string Address
+     */
     public static function address()
     {
         return implode("\n", array(self::streetAddress(rand(0, 1)), self::cityStateZip()));
     }
 
+    /**
+     * Generate a random street name.
+     *
+     * @access public
+     * @static
+     * @return string Street name
+     */
     public static function streetName()
     {
         return implode(' ', array(rand(0, 1) ? Name::firstName() : Name::lastName(), self::streetSuffix()));
     }
 
+    /**
+     * Generate a random street address.
+     *
+     * @access public
+     * @static
+     * @param bool $includeSecondary Include a secondary address, e.g. "Apt. 100"? (default: false)
+     * @return string Street address
+     */
     public static function streetAddress($includeSecondary = false)
     {
         $chunks = array(
@@ -69,6 +97,13 @@ abstract class Address extends Faker
         ));
     }
 
+    /**
+     * Generate a random city name.
+     *
+     * @access public
+     * @static
+     * @return string City name
+     */
     public static function city()
     {
         return sprintf(
@@ -98,6 +133,13 @@ abstract class Address extends Faker
         ));
     }
 
+    /**
+     * Return a random US state name.
+     *
+     * @access public
+     * @static
+     * @return string State name
+     */
     public static function state()
     {
         return self::pickOne(array(
@@ -110,6 +152,13 @@ abstract class Address extends Faker
         ));
     }
 
+    /**
+     * Return a random US state abbreviation.
+     *
+     * @access public
+     * @static
+     * @return string State abbreviation
+     */
     public static function stateAbbr()
     {
         return self::pickOne(array(
@@ -120,26 +169,53 @@ abstract class Address extends Faker
         ));
     }
 
+    /**
+     * Generate a random US ZIP (or ZIP+4) code.
+     *
+     * @access public
+     * @static
+     * @return string ZIP code
+     */
     public static function zipCode()
     {
         return self::numerify(self::pickOne(array('#####', '#####-####')));
     }
 
+    /**
+     * @see \Faker\Address::zipCode
+     */
     public static function zip()
     {
         return self::zipCode();
     }
 
+    /**
+     * @see \Faker\Address::zipCode
+     */
     public static function postcode()
     {
         return self::zipCode();
     }
 
+    /**
+     * Genrate a random "City, State ZIP" combination.
+     *
+     * @access public
+     * @static
+     * @return string City, State ZIP
+     */
     public static function cityStateZip()
     {
         return sprintf('%s, %s %s', self::city(), self::state(), self::zipCode());
     }
 
+    /**
+     * Return a random country.
+     *
+     * @access public
+     * @static
+     * @return string Country name
+     */
     public static function country()
     {
         return self::pickOne(array(

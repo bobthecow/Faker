@@ -11,8 +11,21 @@
 
 namespace Faker;
 
+/**
+ * Phone number Faker.
+ *
+ * @abstract
+ * @extends Faker
+ */
 abstract class PhoneNumber extends Faker
 {
+    /**
+     * Generate a random US phone number.
+     *
+     * @access public
+     * @static
+     * @return string Phone number
+     */
     public static function phoneNumber()
     {
         return self::numerify(self::pickOne(array(

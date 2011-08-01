@@ -11,8 +11,21 @@
 
 namespace Faker;
 
+/**
+ * Company Faker.
+ *
+ * @abstract
+ * @extends Faker
+ */
 abstract class Company extends Faker
 {
+    /**
+     * Generate a fake company name.
+     *
+     * @access public
+     * @static
+     * @return string Company name
+     */
     public static function name()
     {
         return sprintf(
@@ -28,6 +41,13 @@ abstract class Company extends Faker
         );
     }
 
+    /**
+     * Generate a fake company suffix, e.g. "Inc" or "and Sons".
+     *
+     * @access public
+     * @static
+     * @return void
+     */
     public static function suffix()
     {
         return self::pickOne(array('Inc', 'and Sons', 'LLC', 'Group'));
@@ -35,7 +55,12 @@ abstract class Company extends Faker
 
     /**
      * Generate a buzzword-laden catch phrase.
+     *
      * Wordlist from http://www.1728.com/buzzword.htm
+     *
+     * @access public
+     * @static
+     * @return string Catch phrase
      */
     public static function catchPhrase()
     {
@@ -98,7 +123,12 @@ abstract class Company extends Faker
 
     /**
      * When a straight answer won't do, BS to the rescue!
+     *
      * Wordlist from http://dack.com/web/bullshit.html
+     *
+     * @access public
+     * @static
+     * @return string BS
      */
     public static function bs()
     {

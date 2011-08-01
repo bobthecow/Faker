@@ -11,8 +11,21 @@
 
 namespace Faker;
 
+/**
+ * Name Faker.
+ *
+ * @abstract
+ * @extends Faker
+ */
 abstract class Name extends Faker
 {
+    /**
+     * Generate a random full name.
+     *
+     * @access public
+     * @static
+     * @return string Full name
+     */
     public static function name()
     {
         return sprintf(
@@ -31,6 +44,13 @@ abstract class Name extends Faker
         );
     }
 
+    /**
+     * Return a random first name.
+     *
+     * @access public
+     * @static
+     * @return string First name
+     */
     public static function firstName()
     {
         return self::pickOne(array(
@@ -327,6 +347,13 @@ abstract class Name extends Faker
         ));
     }
 
+    /**
+     * Return a random last name.
+     *
+     * @access public
+     * @static
+     * @return string Last name
+     */
     public static function lastName()
     {
         return self::pickOne(array(
@@ -382,11 +409,25 @@ abstract class Name extends Faker
         ));
     }
 
+    /**
+     * Return a random title, e.g. "Mr." or "Dr.".
+     *
+     * @access public
+     * @static
+     * @return string Prefix
+     */
     public static function prefix()
     {
         return self::pickOne(array('Mr.', 'Mrs.', 'Ms.', 'Miss', 'Dr.'));
     }
 
+    /**
+     * Return a random name suffix, e.g. "Jr." or "MD".
+     *
+     * @access public
+     * @static
+     * @return string Suffix
+     */
     public static function suffix()
     {
         return self::pickOne(array('Jr.', 'Sr.', 'I', 'II', 'III', 'IV', 'V', 'MD', 'DDS', 'PhD', 'DVM'));

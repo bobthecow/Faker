@@ -11,8 +11,22 @@
 
 namespace Faker;
 
+/**
+ * Lorem Ipsum Faker.
+ *
+ * @abstract
+ * @extends Faker
+ */
 abstract class Lorem extends Faker
 {
+    /**
+     * Return random "lorem ipsum" words.
+     *
+     * @access public
+     * @static
+     * @param int $num Number of words (default: 3)
+     * @return array Words
+     */
     public static function words($num = 3)
     {
         $words = array(
@@ -45,11 +59,30 @@ abstract class Lorem extends Faker
         return array_slice($words, 0, $num);
     }
 
+    /**
+     * Generate a random sentence.
+     *
+     * Optionally, supply a base number of words to include. The actual number of words in the
+     * sentence will be a random number between $wordCount and $wordCount + 6.
+     *
+     * @access public
+     * @static
+     * @param int $wordCount Minimum number of words in the sentence (default: 4)
+     * @return string Sentence
+     */
     public static function sentence($wordCount = 4)
     {
         return ucfirst(implode(' ', self::words(rand($wordCount, $wordCount + 6)))) . '.';
     }
 
+    /**
+     * Generate random sentences.
+     *
+     * @access public
+     * @static
+     * @param int $sentenceCount Number of sentences (default: 3)
+     * @return array Sentences
+     */
     public static function sentences($sentenceCount = 3)
     {
         $ret = array();
@@ -59,11 +92,30 @@ abstract class Lorem extends Faker
         return $ret;
     }
 
+    /**
+     * Generate a random paragraph.
+     *
+     * Optionally, supply a base number of sentences to include. The actual number of sentences
+     * in the paragraph will be a random number between $sentenceCount and $sentenceCount + 3.
+     *
+     * @access public
+     * @static
+     * @param int $sentenceCount Minimum number of sentences to include (default: 3)
+     * @return string Paragraph
+     */
     public static function paragraph($sentenceCount = 3)
     {
         return implode(' ', self::sentences(rand($sentenceCount, $sentenceCount + 3)));
     }
 
+    /**
+     * Generate random paragraphs.
+     *
+     * @access public
+     * @static
+     * @param int $paragraphCount Number of paragraphs (default: 3)
+     * @return array Paragraphs
+     */
     public static function paragraphs($paragraphCount = 3)
     {
         $ret = array();

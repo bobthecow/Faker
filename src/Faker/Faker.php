@@ -11,6 +11,11 @@
 
 namespace Faker;
 
+/**
+ * Base Faker class, consisting of helper methods for selecting and formatting fake data.
+ *
+ * @abstract
+ */
 abstract class Faker
 {
     public static function numerify($numberString)
