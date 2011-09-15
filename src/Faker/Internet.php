@@ -166,6 +166,20 @@ abstract class Internet extends Faker
         return implode('.', array(rand(0,255), rand(0,255), rand(0,255), rand(0,255)));
     }
 
+    /**
+     * Generate slug, optionally based on a string (like a title)
+     *
+     * @access public
+     * @static
+     * @param string $str (default: null)
+     * @return string URL slug
+     */
+    public static function slug($str = null)
+    {
+        $words = ($str === null) ? array_filter(preg_split('/\W+/', $str)) : Lorem::words();
+        return strtolower(implode(self::pickOne(array('.', '-', '_')), $words));
+    }
+
     private static function separator()
     {
         return self::pickOne(array('.', '_'));
