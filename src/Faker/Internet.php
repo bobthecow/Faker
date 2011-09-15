@@ -57,6 +57,24 @@ abstract class Internet extends Faker
     }
 
     /**
+     * Generate a random "safe" email address, e.g. at "example.com".
+     *
+     * Optionally, pass the user's name, from which the username portion of the email address
+     * will be generated.
+     *
+     * @see \Faker\Internet::userName
+     *
+     * @access public
+     * @static
+     * @param string $name (default: null)
+     * @return string Email address
+     */
+    public static function safeEmail($name = null)
+    {
+        return implode('@', array(self::userName($name), self::safeDomainName()));
+    }
+
+    /**
      * Generate a random username.
      *
      * Optionally, supply a user's name, from which the username will be generated.
@@ -97,6 +115,18 @@ abstract class Internet extends Faker
     public static function domainName()
     {
         return implode('.', array(self::domainWord(), self::domainSuffix()));
+    }
+
+    /**
+     * Generate a random "safe" domain name, e.g. a subdomain of "example.com".
+     *
+     * @access public
+     * @static
+     * @return string Domain name
+     */
+    public static function safeDomainName()
+    {
+        return implode('.', array(self::domainWord(), self::pickOne(array('example.com', 'example.net', 'example.org'))));
     }
 
     /**

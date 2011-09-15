@@ -47,8 +47,10 @@ There are a few more to choose from:
 
     \Faker\Internet::email($name = null);
     \Faker\Internet::freeEmail($name = null);
+    \Faker\Internet::safeEmail($name = null);
     \Faker\Internet::userName($name = null);
     \Faker\Internet::domainName();
+    \Faker\Internet::safeDomainName();
     \Faker\Internet::domainWord();
     \Faker\Internet::domainSuffix();
     \Faker\Internet::ipv4Address();
@@ -66,6 +68,7 @@ There are a few more to choose from:
     \Faker\Name::suffix();
     
     \Faker\PhoneNumber::phoneNumber();
+    \Faker\PhoneNumber::safePhoneNumber();
 
 
 Yeah,

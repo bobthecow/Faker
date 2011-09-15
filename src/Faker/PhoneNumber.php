@@ -36,4 +36,22 @@ abstract class PhoneNumber extends Faker
             '###.###.#### x#####'
         )));
     }
+
+    /**
+     * Generate a random "safe" US phone number, i.e. with area code 555.
+     *
+     * @access public
+     * @static
+     * @return string Phone number
+     */
+    public static function safePhoneNumber()
+    {
+        return self::numerify(self::pickOne(array(
+            '555-###-####', '(555)###-####', '1-555-###-####', '555.###.####', '555-###-####', '(555)###-####',
+            '1-555-###-####', '555.###.####', '555-###-#### x###', '(555)###-#### x###', '1-555-###-#### x###',
+            '555.###.#### x###', '555-###-#### x####', '(555)###-#### x####', '1-555-###-#### x####',
+            '555.###.#### x####', '555-###-#### x#####', '(555)###-#### x#####', '1-555-###-#### x#####',
+            '555.###.#### x#####'
+        )));
+    }
 }
