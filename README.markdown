@@ -54,6 +54,7 @@ There are a few more to choose from:
     \Faker\Internet::domainWord();
     \Faker\Internet::domainSuffix();
     \Faker\Internet::ipv4Address();
+    \Faker\Internet::slug($str = null, array $glue = array('.', '-', '_'));
     
     \Faker\Lorem::words($num = 3);
     \Faker\Lorem::sentence($wordCount = 4);

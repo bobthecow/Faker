@@ -171,13 +171,14 @@ abstract class Internet extends Faker
      *
      * @access public
      * @static
-     * @param string $str (default: null)
+     * @param string        $str (default: null)
+     * @param array|string  $glue (default: array('.', '-', '_')) Picks one glue if array, otherwise uses the string
      * @return string URL slug
      */
-    public static function slug($str = null)
+    public static function slug($str = null, $glue = array('.', '-', '_'))
     {
         $words = ($str === null) ? array_filter(preg_split('/\W+/', $str)) : Lorem::words();
-        return strtolower(implode(self::pickOne(array('.', '-', '_')), $words));
+        return strtolower(implode(is_array($glue) ? self::pickOne($glue) : (string) $glue, $words));
     }
 
     private static function separator()
