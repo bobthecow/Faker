@@ -56,6 +56,7 @@ There are a few more to choose from:
     \Faker\Internet::ipv4Address();
     \Faker\Internet::slug($str = null, $glue = array('.', '-', '_'));
     
+    \Faker\Lorem::word();
     \Faker\Lorem::words($num = 3);
     \Faker\Lorem::sentence($wordCount = 4);
     \Faker\Lorem::sentences($sentenceCount = 3);
