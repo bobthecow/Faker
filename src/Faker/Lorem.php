@@ -20,6 +20,19 @@ namespace Faker;
 abstract class Lorem extends Faker
 {
     /**
+     * Return a random "lorem ipsum" word.
+     *
+     * @access public
+     * @static
+     * @return string Word
+     */
+    public static function word()
+    {
+        $words = self::words(1);
+        return reset($words);
+    }
+    
+    /**
      * Return random "lorem ipsum" words.
      *
      * @access public
