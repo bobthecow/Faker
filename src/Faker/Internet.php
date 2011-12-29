@@ -177,7 +177,7 @@ abstract class Internet extends Faker
      */
     public static function slug($str = null, $glue = array('.', '-', '_'))
     {
-        $words = ($str === null) ? array_filter(preg_split('/\W+/', $str)) : Lorem::words();
+        $words = ($str === null) ? Lorem::words() : array_filter(preg_split('/\W+/', $str));
         return strtolower(implode(is_array($glue) ? self::pickOne($glue) : (string) $glue, $words));
     }
 
