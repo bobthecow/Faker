@@ -37,4 +37,5 @@ abstract class Faker
     {
         return $options[array_rand($options)];
     }
+
 }
