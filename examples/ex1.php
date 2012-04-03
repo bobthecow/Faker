@@ -59,11 +59,11 @@ echo "<p>".\Faker\Internet::ipv4Address();
 echo "<p>".\Faker\Internet::slug($str = null, $glue = array('.', '-', '_'));
 
 echo "<p>".\Faker\Lorem::word();
-echo "<p>".\Faker\Lorem::words($num = 3);
+echo "<pre>".print_r(\Faker\Lorem::words($num = 3),true)."</pre>";
 echo "<p>".\Faker\Lorem::sentence($wordCount = 4);
-echo "<p>".\Faker\Lorem::sentences($sentenceCount = 3);
+echo "<pre>".print_r(\Faker\Lorem::sentences($sentenceCount = 3),true)."</pre>";
 echo "<p>".\Faker\Lorem::paragraph($sentenceCount = 3);
-echo "<p>".\Faker\Lorem::paragraphs($paragraphCount = 3);
+echo "<pre>".print_r(\Faker\Lorem::paragraphs($paragraphCount = 3),true)."</pre>";
 
 echo "<p>".\Faker\Name::name();
 echo "<p>".\Faker\Name::firstName();
