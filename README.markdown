@@ -72,6 +72,8 @@ There are a few more to choose from:
     \Faker\PhoneNumber::phoneNumber();
     \Faker\PhoneNumber::safePhoneNumber();
 
+    \Faker\Token::token();
+
 
 Yeah,
 -----
