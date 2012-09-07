@@ -45,6 +45,8 @@ There are a few more to choose from:
     \Faker\DateTime::weekday();
     \Faker\DateTime::weekdayAbbr();
 
+    \Faker\Faker::pickOne($options);
+
     \Faker\Internet::email($name = null);
     \Faker\Internet::freeEmail($name = null);
     \Faker\Internet::safeEmail($name = null);
@@ -71,6 +73,8 @@ There are a few more to choose from:
     
     \Faker\PhoneNumber::phoneNumber();
     \Faker\PhoneNumber::safePhoneNumber();
+
+    \Faker\Token::token();
 
 
 Yeah,
