@@ -33,7 +33,15 @@ abstract class Faker
         return self::letterify(self::numerify($string));
     }
 
-    protected static function pickOne(array $options)
+    /**
+     * Return a random option from a list of options
+     *
+     * @access public
+     * @param array $options
+     * @static
+     * @return member of the array
+     */
+    public static function pickOne(array $options)
     {
         return $options[array_rand($options)];
     }
