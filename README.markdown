@@ -44,7 +44,20 @@ There are a few more to choose from:
     \Faker\DateTime::monthAbbr();
     \Faker\DateTime::weekday();
     \Faker\DateTime::weekdayAbbr();
-
+    
+    \Faker\Geo::point($precision = 4);
+    \Faker\Geo::latitude($precision = 4);
+    \Faker\Geo::longitude($precision = 4);
+    \Faker\Geo::usPoint($precision = 4);
+    \Faker\Geo::usLatitude($precision = 4);
+    \Faker\Geo::usLongitude($precision = 4);
+    \Faker\Geo::pointDMS();
+    \Faker\Geo::latitudeDMS();
+    \Faker\Geo::longitudeDMS();
+    \Faker\Geo::usPointDMS();
+    \Faker\Geo::usLatitudeDMS();
+    \Faker\Geo::usLongitudeDMS();
+    
     \Faker\Internet::email($name = null);
     \Faker\Internet::freeEmail($name = null);
     \Faker\Internet::safeEmail($name = null);
