@@ -19,68 +19,68 @@ namespace Faker;
  */
 abstract class Geo extends Faker
 {
-    // Source: http://en.wikipedia.org/wiki/Extreme_points_of_the_United_States
-    const US_LAT_MIN  =   24.520833;
-    const US_LAT_MAX  =   49.384472;
-    const US_LONG_MIN = -124.771694;
-    const US_LONG_MAX =  -66.949778;
+    // Point indices
+    const LAT = 0;
+    const LNG = 1;
+
+    // c.f. definition of latitude and longitude
+    const LAT_MIN =  -90;
+    const LAT_MAX =   90;
+    const LNG_MIN = -180;
+    const LNG_MAX =  180;
+
+    const PRECISION = 6;
 
     /**
-     * Generate random latlong coordinates, as an array.
+     * Get a southwest / northeast pair of points defining the bounds of the earth.
      *
-     * @access public
+     * @access  public
      * @static
-     * @param int $precision (default: 4)
-     * @return array [Latitude, Longitude]
+     * @return  array [[$swLat, $swLng], [$neLat, $neLng]]
      */
-    public static function point($precision = 4)
+    public static function bounds()
     {
-        return array(self::latitude($precision), self::longitude($precision));
+        return array(
+            array(static::LAT_MIN, static::LNG_MIN),
+            array(static::LAT_MAX, static::LNG_MAX),
+        );
     }
 
     /**
-     * Generate random latlong coordinates, approximately with the 48 contiguous
-     * United States.
+     * Generate random coordinates, as an array.
      *
      * @access public
      * @static
-     * @param int $precision (default: 4)
-     * @return array [Latitude, Longitude]
+     * @param  array $bounds
+     * @return array [$lat, $lng]
      */
-    public static function usPoint($precision = 4)
+    public static function point(array $bounds = null)
     {
-        return array(self::usLatitude($precision), self::usLongitude($precision));
+        if ($bounds === null) {
+            $bounds = static::bounds();
+        }
+
+        return array(
+            self::LAT => self::randFloat(self::latRange($bounds)),
+            self::LNG => self::randFloat(self::lngRange($bounds)),
+        );
     }
 
     /**
-     * Generate random latlong coordinates, formatted as degrees, minutes and
-     * seconds.
+     * Generate random coordinates, formatted as degrees, minutes and seconds.
      *
      *     45°30'15" -90°30'15"
      *
      * @access public
      * @static
-     * @param int $precision (default: 4)
-     * @return string Formatted latlong coordinates
+     * @param  array  $bounds
+     * @return string Formatted coordinates
      */
-    public static function pointDMS()
+    public static function pointDMS(array $bounds = null)
     {
-        return sprintf('%s %s', self::latitudeDMS(), self::longitudeDMS());
-    }
+        list($lat, $lng) = static::point($bounds);
 
-    /**
-     * Generate random latlong coordinates, formatted as degrees, minutes and
-     * seconds, approximately within the 48 contiguous United States.
-     *
-     *     45°30'15" -90°30'15"
-     *
-     * @access public
-     * @static
-     * @return string Formatted US latlong coordinates
-     */
-    public static function usPointDMS()
-    {
-        return sprintf('%s %s', self::usLatitudeDMS(), self::usLongitudeDMS());
+        return sprintf('%s %s', self::floatToDMS($lat), self::floatToDMS($lng));
     }
 
     /**
@@ -88,26 +88,12 @@ abstract class Geo extends Faker
      *
      * @access public
      * @static
-     * @param int $precision (default: 4)
+     * @param  array $bounds
      * @return float Latitude angle
      */
-    public static function latitude($precision = 4)
+    public static function latitude(array $bounds = null)
     {
-        return self::randFloat(-90, 90, $precision);
-    }
-
-    /**
-     * Generate a random latitude angle, approximately within the 48 contiguous
-     * United States.
-     *
-     * @access public
-     * @static
-     * @param int $precision (default: 4)
-     * @return float US latitude angle
-     */
-    public static function usLatitude($precision = 4)
-    {
-        return self::randFloat(self::US_LAT_MIN, self::US_LAT_MAX, $precision);
+        return self::randFloat(self::latRange($bounds));
     }
 
     /**
@@ -118,26 +104,12 @@ abstract class Geo extends Faker
      *
      * @access public
      * @static
+     * @param  array  $bounds
      * @return string Formatted latitude angle
      */
-    public static function latitudeDMS()
+    public static function latitudeDMS(array $bounds = null)
     {
-        return self::randDMS(-90, 90);
-    }
-
-    /**
-     * Generate a random latitude angle, formatted as degrees, minutes and
-     * seconds, approximately within the 48 contiguous United States.
-     *
-     *     45°30'15"
-     *
-     * @access public
-     * @static
-     * @return string Formatted US latitude angle
-     */
-    public static function usLatitudeDMS()
-    {
-        return self::randDMS(self::US_LAT_MIN, self::US_LAT_MAX);
+        return self::floatToDMS(static::latitude($bounds));
     }
 
     /**
@@ -146,24 +118,12 @@ abstract class Geo extends Faker
      *
      * @access public
      * @static
+     * @param  array $bounds
      * @return float Longitude angle
      */
-    public static function longitude($precision = 4)
+    public static function longitude(array $bounds = null)
     {
-        return self::randFloat(-180, 180, $precision);
-    }
-
-    /**
-     * Generate a random longitude angle, formatted as degrees, minutes and
-     * seconds, approximately within the 48 contiguous United States.
-     *
-     * @access public
-     * @static
-     * @return float US longitude angle
-     */
-    public static function usLongitude($precision = 4)
-    {
-        return self::randFloat(self::US_LONG_MIN, self::US_LONG_MAX, $precision);
+        return self::randFloat(self::lngRange($bounds));
     }
 
     /**
@@ -174,36 +134,47 @@ abstract class Geo extends Faker
      *
      * @access public
      * @static
+     * @param  array  $bounds
      * @return string Formatted longitude angle
      */
-    public static function longitudeDMS()
+    public static function longitudeDMS(array $bounds = null)
     {
-        return self::randDMS(-180, 180);
+        return self::floatToDMS(static::longitude($bounds));
     }
 
-    /**
-     * Generate a random longitude angle, formatted as degrees, minutes and
-     * seconds, approximately within the 48 contiguous United States.
-     *
-     *     -90°30'15"
-     *
-     * @access public
-     * @static
-     * @return string Formatted US longitude angle
-     */
-    public static function usLongitudeDMS()
+    private static function latRange(array $bounds = null)
     {
-        return self::randDMS(self::US_LONG_MIN, self::US_LONG_MAX);
+        if ($bounds === null) {
+            $bounds = static::bounds();
+        }
+
+        // Handle either a range of points, or a range of floats.
+        if (is_array($bounds[0])) {
+            return array($bounds[0][self::LAT], $bounds[1][self::LAT]);
+        } else {
+            return $bounds;
+        }
     }
 
-    private static function randFloat($min, $max, $precision = 4)
+    private static function lngRange(array $bounds = null)
     {
-        return round($min + (lcg_value() * abs($max - $min)), $precision);
+        if ($bounds === null) {
+            $bounds = static::bounds();
+        }
+
+        // Handle either a range of points, or a range of floats.
+        if (is_array($bounds[0])) {
+            return array($bounds[0][self::LNG], $bounds[1][self::LNG]);
+        } else {
+            return $bounds;
+        }
     }
 
-    private static function randDMS($min, $max)
+    private static function randFloat(array $range)
     {
-        return self::floatToDMS(self::randFloat($min, $max));
+        list($min, $max) = $range;
+
+        return round($min + (lcg_value() * abs($max - $min)), static::PRECISION);
     }
 
     private static function floatToDMS($float)

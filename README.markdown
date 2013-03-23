@@ -10,80 +10,122 @@ data for your PHP 5.3 project.
 Usage is fairly straightforward:
 --------------------------------
 
-    echo \Faker\Name::name();    // "Leeroy Jenkins"
+```php
+echo \Faker\Name::name();    // "Leeroy Jenkins"
+```
 
 
 There are a few more to choose from:
 ------------------------------------
 
-    \Faker\Address::address();
-    \Faker\Address::streetName();
-    \Faker\Address::streetAddress($includeSecondary = false);
-    \Faker\Address::city();
-    \Faker\Address::state();
-    \Faker\Address::stateAbbr();
-    \Faker\Address::zipCode();
-    \Faker\Address::zip();
-    \Faker\Address::postcode();
-    \Faker\Address::cityStateZip();
-    \Faker\Address::country();
-    
-    \Faker\Company::name();
-    \Faker\Company::suffix();
-    \Faker\Company::catchPhrase();
-    \Faker\Company::bs();
-    
-    \Faker\DateTime::timestamp();
-    \Faker\DateTime::date($format = null);
-    \Faker\DateTime::dateFormat();
-    \Faker\DateTime::time($format = null);
-    \Faker\DateTime::timeFormat();
-    \Faker\DateTime::dateTime($format = null);
-    \Faker\DateTime::dateTimeFormat();
-    \Faker\DateTime::month();
-    \Faker\DateTime::monthAbbr();
-    \Faker\DateTime::weekday();
-    \Faker\DateTime::weekdayAbbr();
-    
-    \Faker\Geo::point($precision = 4);
-    \Faker\Geo::latitude($precision = 4);
-    \Faker\Geo::longitude($precision = 4);
-    \Faker\Geo::usPoint($precision = 4);
-    \Faker\Geo::usLatitude($precision = 4);
-    \Faker\Geo::usLongitude($precision = 4);
-    \Faker\Geo::pointDMS();
-    \Faker\Geo::latitudeDMS();
-    \Faker\Geo::longitudeDMS();
-    \Faker\Geo::usPointDMS();
-    \Faker\Geo::usLatitudeDMS();
-    \Faker\Geo::usLongitudeDMS();
-    
-    \Faker\Internet::email($name = null);
-    \Faker\Internet::freeEmail($name = null);
-    \Faker\Internet::safeEmail($name = null);
-    \Faker\Internet::userName($name = null);
-    \Faker\Internet::domainName();
-    \Faker\Internet::safeDomainName();
-    \Faker\Internet::domainWord();
-    \Faker\Internet::domainSuffix();
-    \Faker\Internet::ipv4Address();
-    \Faker\Internet::slug($str = null, $glue = array('.', '-', '_'));
-    
-    \Faker\Lorem::word();
-    \Faker\Lorem::words($num = 3);
-    \Faker\Lorem::sentence($wordCount = 4);
-    \Faker\Lorem::sentences($sentenceCount = 3);
-    \Faker\Lorem::paragraph($sentenceCount = 3);
-    \Faker\Lorem::paragraphs($paragraphCount = 3);
-    
-    \Faker\Name::name();
-    \Faker\Name::firstName();
-    \Faker\Name::lastName();
-    \Faker\Name::prefix();
-    \Faker\Name::suffix();
-    
-    \Faker\PhoneNumber::phoneNumber();
-    \Faker\PhoneNumber::safePhoneNumber();
+```php
+\Faker\Address::address();
+\Faker\Address::streetName();
+\Faker\Address::streetAddress($includeSecondary = false);
+\Faker\Address::city();
+\Faker\Address::state();
+\Faker\Address::stateAbbr();
+\Faker\Address::zipCode();
+\Faker\Address::zip();
+\Faker\Address::postcode();
+\Faker\Address::cityStateZip();
+\Faker\Address::country();
+
+
+\Faker\Company::name();
+\Faker\Company::suffix();
+\Faker\Company::catchPhrase();
+\Faker\Company::bs();
+
+
+\Faker\DateTime::timestamp();
+\Faker\DateTime::date($format = null);
+\Faker\DateTime::dateFormat();
+\Faker\DateTime::time($format = null);
+\Faker\DateTime::timeFormat();
+\Faker\DateTime::dateTime($format = null);
+\Faker\DateTime::dateTimeFormat();
+\Faker\DateTime::month();
+\Faker\DateTime::monthAbbr();
+\Faker\DateTime::weekday();
+\Faker\DateTime::weekdayAbbr();
+
+
+\Faker\Geo::point();
+\Faker\Geo::latitude();
+\Faker\Geo::longitude();
+\Faker\Geo::pointDMS();
+\Faker\Geo::latitudeDMS();
+\Faker\Geo::longitudeDMS();
+
+\Faker\Geo\BuenosAires::point();
+\Faker\Geo\Chicago::latitude();
+\Faker\Geo\Jakarta::longitude();
+\Faker\Geo\London::pointDMS();
+\Faker\Geo\LosAngeles::latitudeDMS();
+\Faker\Geo\MexicoCity::longitudeDMS();
+
+\Faker\Geo::point(\Faker\Geo\NewDelhi::bounds());
+\Faker\Geo::latitude(\Faker\Geo\NewYork::bounds());
+\Faker\Geo::longitude(\Faker\Geo\Paris::bounds());
+\Faker\Geo::pointDMS(\Faker\Geo\Portland::bounds());
+\Faker\Geo::latitudeDMS(\Faker\Geo\SanFrancisco::bounds());
+\Faker\Geo::longitudeDMS(\Faker\Geo\SaoPaulo::bounds());
+
+\Faker\Geo::point([[0, 45], [0, 90]]);
+\Faker\Geo::latitude([0, 45]);
+\Faker\Geo::longitude([0, 90]);
+\Faker\Geo::pointDMS([[0, 45], [0, 90]]);
+\Faker\Geo::latitudeDMS([0, 45]);
+\Faker\Geo::longitudeDMS([0, 90]);
+
+\Faker\Geo\BuenosAires::point();
+\Faker\Geo\Chicago::point();
+\Faker\Geo\Jakarta::point();
+\Faker\Geo\London::point();
+\Faker\Geo\LosAngeles::point();
+\Faker\Geo\MexicoCity::point();
+\Faker\Geo\NewDelhi::point();
+\Faker\Geo\NewYork::point();
+\Faker\Geo\Paris::point();
+\Faker\Geo\Portland::point();
+\Faker\Geo\SanFrancisco::point();
+\Faker\Geo\SaoPaulo::point();
+\Faker\Geo\Seoul::point();
+\Faker\Geo\Tokyo::point();
+\Faker\Geo\UnitedStates::point();
+
+
+\Faker\Internet::email($name = null);
+\Faker\Internet::freeEmail($name = null);
+\Faker\Internet::safeEmail($name = null);
+\Faker\Internet::userName($name = null);
+\Faker\Internet::domainName();
+\Faker\Internet::safeDomainName();
+\Faker\Internet::domainWord();
+\Faker\Internet::domainSuffix();
+\Faker\Internet::ipv4Address();
+\Faker\Internet::slug($str = null, $glue = array('.', '-', '_'));
+
+
+\Faker\Lorem::word();
+\Faker\Lorem::words($num = 3);
+\Faker\Lorem::sentence($wordCount = 4);
+\Faker\Lorem::sentences($sentenceCount = 3);
+\Faker\Lorem::paragraph($sentenceCount = 3);
+\Faker\Lorem::paragraphs($paragraphCount = 3);
+
+
+\Faker\Name::name();
+\Faker\Name::firstName();
+\Faker\Name::lastName();
+\Faker\Name::prefix();
+\Faker\Name::suffix();
+
+
+\Faker\PhoneNumber::phoneNumber();
+\Faker\PhoneNumber::safePhoneNumber();
+```
 
 
 Yeah,
