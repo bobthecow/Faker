@@ -72,12 +72,12 @@ There are a few more to choose from:
 \Faker\Geo::latitudeDMS(\Faker\Geo\SanFrancisco::bounds());
 \Faker\Geo::longitudeDMS(\Faker\Geo\SaoPaulo::bounds());
 
-\Faker\Geo::point([[0, 45], [0, 90]]);
-\Faker\Geo::latitude([0, 45]);
-\Faker\Geo::longitude([0, 90]);
-\Faker\Geo::pointDMS([[0, 45], [0, 90]]);
-\Faker\Geo::latitudeDMS([0, 45]);
-\Faker\Geo::longitudeDMS([0, 90]);
+\Faker\Geo::point([[$swLat, $swLng], [$neLat, $neLng]]);
+\Faker\Geo::latitude([$latMin, $latMax]);
+\Faker\Geo::longitude([$lngMin, $lngMax]);
+\Faker\Geo::pointDMS([[$swLat, $swLng], [$neLat, $neLng]]);
+\Faker\Geo::latitudeDMS([$latMin, $latMax]);
+\Faker\Geo::longitudeDMS([$lngMin, $lngMax]);
 
 \Faker\Geo\BuenosAires::point();
 \Faker\Geo\Chicago::point();
