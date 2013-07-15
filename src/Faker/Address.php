@@ -65,7 +65,14 @@ abstract class Address extends Faker
         return self::numerify(implode(' ', $chunks));
     }
 
-    private static function secondaryAddress()
+    /**
+     * Generate a random secondary address.
+     *
+     * @access public
+     * @static
+     * @return string Secondary address
+     */
+    public static function secondaryAddress()
     {
         return self::numerify(self::pickOne(array('Apt. ###', 'Suite ###')));
     }
