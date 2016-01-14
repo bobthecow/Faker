@@ -6,6 +6,12 @@ Faker
 It's a convoluted path, but you're the beneficiary of a simple way to generate fake
 data for your PHP 5.3 project.
 
+### INSTALLATION
+
+```console
+$ composer require bobthecow/faker:dev-master
+```
+
 
 Usage is fairly straightforward:
 --------------------------------
