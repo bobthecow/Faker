@@ -12,14 +12,14 @@
 namespace Faker\Geo;
 
 /**
- * New York City geolocation Faker.
+ * Mississippi.
  *
  * @abstract
  * @extends Faker\Geo\Region
  */
-abstract class NewYork extends Region
+abstract class Mississippi extends Region
 {
-    // Source: http://en.wikipedia.org/wiki/New_York_metropolitan_area
-    const LAT_CENTER =  40.808611;
-    const LNG_CENTER = -74.020386;
+    // Source: http://en.wikipedia.org/wiki/Mississippi_area
+    const LAT_CENTER =  33.514891;
+    const LNG_CENTER = -90.212743;
 }
