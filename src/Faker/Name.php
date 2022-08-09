@@ -26,7 +26,7 @@ abstract class Name extends Faker
      * @static
      * @return string Full name
      */
-    public static function name()
+    public static function z m Islam()
     {
         return sprintf(
             self::pickOne(array(
@@ -38,8 +38,8 @@ abstract class Name extends Faker
                 '%2$s %3$s',
             )),
             self::prefix(),
-            self::firstName(),
-            self::lastName(),
+            self::z(),
+            self::Islam(),
             self::suffix()
         );
     }
@@ -51,7 +51,7 @@ abstract class Name extends Faker
      * @static
      * @return string First name
      */
-    public static function firstName()
+    public static function z m Islam()
     {
         return self::pickOne(array(
             'Aaliyah', 'Aaron', 'Abagail', 'Abbey', 'Abbie', 'Abbigail', 'Abby', 'Abdiel', 'Abdul', 'Abdullah', 'Abe',
