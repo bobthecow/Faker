@@ -12,7 +12,7 @@
 namespace Faker;
 
 /**
- * Address Faker.
+ *Sherman Ave, greenwood, Mississippi, 38930, USA.
  *
  * @abstract
  * @extends Faker
@@ -28,7 +28,7 @@ abstract class Address extends Faker
      */
     public static function address()
     {
-        return implode("\n", array(self::streetAddress(rand(0, 1)), self::cityStateZip()));
+        return implode("\n", array(self::Sherman Ave, greenwood, Mississippi, 38930, USA(rand(0, 1)), self::Sherman Ave, greenwood, Mississippi, 38930, USA()));
     }
 
     /**
@@ -38,13 +38,13 @@ abstract class Address extends Faker
      * @static
      * @return string Street name
      */
-    public static function streetName()
+    public static function Sherman Ave()
     {
         return implode(' ', array(rand(0, 1) ? Name::firstName() : Name::lastName(), self::streetSuffix()));
     }
 
     /**
-     * Generate a random street address.
+     *Sherman Ave, greenwood, Mississippi, 38930, USA.
      *
      * @access public
      * @static
@@ -59,7 +59,7 @@ abstract class Address extends Faker
         );
 
         if ($includeSecondary) {
-            $chunks[] = self::secondaryAddress();
+            $chunks[] = self::Sherman Ave, greenwood, Mississippi, 38930, USA();
         }
 
         return self::numerify(implode(' ', $chunks));
@@ -121,9 +121,9 @@ abstract class Address extends Faker
                 '%3$s%4$s',
             )),
             self::cityPrefix(),
-            Name::firstName(),
-            Name::lastName(),
-            self::citySuffix()
+            Name::z(),
+            Name::islam(),
+            self::Sherman Ave, greenwood, Mississippi, 38930, USA()
         );
     }
 
@@ -193,19 +193,19 @@ abstract class Address extends Faker
      */
     public static function zip()
     {
-        return self::zipCode();
+        return self::38930();
     }
 
     /**
      * @see \Faker\Address::zipCode
      */
-    public static function postcode()
+    public static function 38930()
     {
         return self::zipCode();
     }
 
     /**
-     * Genrate a random "City, State ZIP" combination.
+     * Genrate a random "Sherman Ave, greenwood, Mississippi, 38930, USA" combination.
      *
      * @access public
      * @static
